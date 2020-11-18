@@ -5,19 +5,23 @@ import fbConnection from '../helpers/data/connection';
 import MyNavbar from '../components/MyNavbar';
 import Routes from '../helpers/routes';
 
+// import { patchFBBoardkeys, patchFBPinkeys } from '../helpers/data/patchFBkeys';
+
+// patchFBBoardkeys();
+// patchFBPinkeys();
 fbConnection();
 
 class App extends React.Component {
   state = {
-    authed: false,
-  }
+    user: null,
+  };
 
   componentDidMount() {
     this.removeListener = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        this.setState({ authed: true });
+        this.setState({ user });
       } else {
-        this.setState({ authed: false });
+        this.setState({ user: false });
       }
     });
   }
@@ -27,16 +31,13 @@ class App extends React.Component {
   }
 
   render() {
-    const { authed } = this.state;
-
+    const { user } = this.state;
     return (
-      <div className="App">
+      <div className='App'>
         <Router>
-        <MyNavbar authed={authed} />
-        <Routes authed={authed} />
+          <MyNavbar user={user}/>
+          <Routes user={user} />
         </Router>
-        {/* {loadComponent()} */}
-
       </div>
     );
   }

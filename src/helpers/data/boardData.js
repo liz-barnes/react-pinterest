@@ -9,4 +9,10 @@ const getUserBoards = () => new Promise((resolve, reject) => {
     }).catch((error) => reject(error));
 });
 
-export default getUserBoards;
+const getSingleBoard = (boardId) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/boards/${boardId}.json`).then((response) => {
+    resolve(response.data);
+  }).catch((error) => reject(error));
+});
+
+export { getUserBoards, getSingleBoard };
