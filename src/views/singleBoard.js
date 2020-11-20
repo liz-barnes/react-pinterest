@@ -51,11 +51,12 @@ export default class SingleBoard extends Component {
     const { pins, board } = this.state;
     const { user } = this.props;
     const renderPins = () => (
-      pins.length ? (
-        pins.map((pin) => <PinCard key={pin.firebaseKey} pin={pin} />)
-      ) : (
+      pins.length
+        ? pins.map((pin) => (
+          <PinCard key={pin.firebaseKey} pin={pin} />
+        )) : (
         <h2>Add Pin</h2>
-      )
+        )
     );
 
     return (
