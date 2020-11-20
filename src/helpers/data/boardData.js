@@ -2,9 +2,9 @@ import axios from 'axios';
 
 const baseUrl = 'https://react-pinterest-13f74.firebaseio.com';
 
-const getUserBoards = () => new Promise((resolve, reject) => {
+const getUserBoards = (uid) => new Promise((resolve, reject) => {
   axios
-    .get(`${baseUrl}/boards.json`).then((response) => {
+    .get(`${baseUrl}/boards.json?orderBy="userId"&equalTo="${uid}"`).then((response) => {
       resolve(Object.values(response.data));
     }).catch((error) => reject(error));
 });
@@ -15,4 +15,21 @@ const getSingleBoard = (boardId) => new Promise((resolve, reject) => {
   }).catch((error) => reject(error));
 });
 
-export { getUserBoards, getSingleBoard };
+const createBoard = (object) => new Promise((resolve, reject) => {
+  axios.post(`${baseUrl}/boards.json`, object)
+    .then((response) => {
+      console.warn(response);
+      axios.patch(`${baseUrl}/boards/${response.data.name}.json`, { firebaseKey: response.data.name }).then(resolve);
+    }).catch((error) => reject(error));
+});
+
+const updateBoard = (object) => new Promise((resolve, reject) => {
+  axios.patch(`${baseUrl}/boards/${object.firebaseKey}.json`, object)
+    .then(resolve).catch((error) => reject(error));
+});
+export {
+  getUserBoards,
+  getSingleBoard,
+  createBoard,
+  updateBoard,
+};

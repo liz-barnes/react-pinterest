@@ -34,6 +34,8 @@ import BoardsCard from '../components/Cards/BoardCard';
 import Loader from '../components/Loader';
 import getUid from '../helpers/data/authData';
 import BoardForm from '../components/Forms/BoardForm';
+import AppModal from '../components/Modal';
+import PageHeader from '../components/PageHeader';
 
 export default class Boards extends React.Component {
   state = {
@@ -42,6 +44,10 @@ export default class Boards extends React.Component {
   }
 
   componentDidMount() {
+    this.getBoards();
+  }
+
+  getBoards = () => {
     const currentUserId = getUid();
     getUserBoards(currentUserId).then((response) => {
       this.setState({
@@ -62,6 +68,7 @@ export default class Boards extends React.Component {
 
   render() {
     const { boards, loading } = this.state;
+    const { user } = this.props;
     const showBoards = () => (
       boards.map((board) => <BoardsCard key={board.firebaseKey} board={board} />)
     );
@@ -71,7 +78,11 @@ export default class Boards extends React.Component {
           <Loader />
         ) : (
           <>
-          <BoardForm />
+          <PageHeader user={user} />
+          <h1>Boards</h1>
+          <AppModal title={'Add Board'} icon={'fa-plus-circle'}>
+            <BoardForm onUpdate={this.getBoards}/>
+          </AppModal>
           <h2>Here are all of your boards</h2>
           <div className='d-flex flex-wrap container'>{showBoards()}</div>
           </>

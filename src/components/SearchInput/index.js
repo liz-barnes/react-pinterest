@@ -26,7 +26,7 @@ class SearchInput extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <input type='text' name='text' value={this.state.text} onChange={this.handleChange} />
+        <input type='text' name='text' value={this.state.text} onChange={this.handleChange} placeholder={'Search...'}/>
         <select name='type' value={this.state.type} onChange={this.handleChange} >
           <option value='pins'>Pins</option>
           <option value='boards'>Boards</option>
