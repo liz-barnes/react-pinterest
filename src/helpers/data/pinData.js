@@ -14,4 +14,22 @@ const getPin = (pinId) => new Promise((resolve, reject) => {
   }).catch((error) => reject(error));
 });
 
-export { getBoardPins, getPin };
+const createPin = (object) => new Promise((resolve, reject) => {
+  axios.post(`${baseUrl}/pins.json`, object)
+    .then((response) => {
+      console.warn(response);
+      axios.patch(`${baseUrl}/boards/${response.data.name}.json`, { firebaseKey: response.data.name }).then(resolve);
+    }).catch((error) => reject(error));
+});
+
+const updatePin = (object) => new Promise((resolve, reject) => {
+  axios.patch(`${baseUrl}/boards/${object.firebaseKey}.json`, object)
+    .then(resolve).catch((error) => reject(error));
+});
+
+export {
+  getBoardPins,
+  getPin,
+  createPin,
+  updatePin,
+};

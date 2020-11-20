@@ -27,6 +27,7 @@ const updateBoard = (object) => new Promise((resolve, reject) => {
   axios.patch(`${baseUrl}/boards/${object.firebaseKey}.json`, object)
     .then(resolve).catch((error) => reject(error));
 });
+
 export {
   getUserBoards,
   getSingleBoard,

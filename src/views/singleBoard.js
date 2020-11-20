@@ -15,8 +15,8 @@ import React, { Component } from 'react';
 import { getBoardPins, getPin } from '../helpers/data/pinData';
 import { getSingleBoard } from '../helpers/data/boardData';
 import PinCard from '../components/Cards/PinCard';
-import BoardForm from './boardForm';
-import AppModal from '../components/AppModal';
+import BoardForm from '../components/Forms/BoardForm';
+import AppModal from '../components/Modal';
 import PageHeader from '../components/PageHeader';
 
 export default class SingleBoard extends Component {
