@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/storage';
-import getUser from '../../helpers/data/authData';
+import getUid from '../../helpers/data/authData';
 import { createPin, updatePin } from '../../helpers/data/pinData';
+import { getUserBoards } from '../../helpers/data/boardData';
 
 export default class PinForm extends Component {
   state = {
@@ -12,12 +13,25 @@ export default class PinForm extends Component {
     userId: this.props.pin?.userId || '',
     description: this.props.pin?.description || '',
     private: this.props.pin?.private || 'true',
+    boards: [],
+    boardId: this.props.pin?.boardId || '',
     // boardId: this.props.board?.firebaseKey || '',
   }
 
   componentDidMount() {
-    const userId = getUser();
-    this.setState({ userId });
+    this.getBoards();
+    // const userId = getUid();
+    // this.setState({ userId });
+  }
+
+  getBoards = () => {
+    const currentUserId = getUid();
+    getUserBoards(currentUserId).then((response) => {
+      this.setState({
+        userId: currentUserId,
+        boards: response,
+      }, this.setLoading);
+    });
   }
 
   handleChange = (e) => {
@@ -57,7 +71,10 @@ export default class PinForm extends Component {
   }
 
   render() {
-    const { success } = this.state;
+    const { success, boards } = this.state;
+    const showBoardOptions = () => (
+      boards.map((board) => <option key={board.firebaseKey} value={board.firebaseKey}>{board.name}</option>)
+    );
     return (
       <>
       { success && (<div className="alert alert-success" role="alert">Your Pin was Updated/Created</div>)
@@ -99,10 +116,18 @@ export default class PinForm extends Component {
         <div>
          <input className="m-2" type="file" id="myFile" name="filename" accept="image/*" onChange={this.handleChange} />
          </div>
-         <select name='private' value={this.state.private} onChange={this.handleChange} >
-          <option value='true'>Private</option>
-          <option value='false'>Public</option>
-        </select>
+         <div>
+          <select name='boardId' value={this.state.boardId} onChange={this.handleChange} placeholder='Select A Board' required>
+          <option value="">Select a Board</option>
+            {showBoardOptions()}
+          </select>
+        </div>
+        <div>
+          <select name='private' value={this.state.private} onChange={this.handleChange} required>
+            <option value='true'>Private</option>
+            <option value='false'>Public</option>
+          </select>
+        </div>
          <button ref={(btn) => { this.btn = btn; }} className="btn btn-primary m-2">Submit</button>
       </form>
       </>
