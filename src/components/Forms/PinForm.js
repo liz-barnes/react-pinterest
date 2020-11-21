@@ -11,7 +11,7 @@ export default class PinForm extends Component {
     imageUrl: this.props.pin?.imageUrl || '',
     userId: this.props.pin?.userId || '',
     description: this.props.pin?.description || '',
-    private: this.props.pin?.private || '',
+    private: this.props.pin?.private || 'true',
     // boardId: this.props.board?.firebaseKey || '',
   }
 
@@ -99,6 +99,10 @@ export default class PinForm extends Component {
         <div>
          <input className="m-2" type="file" id="myFile" name="filename" accept="image/*" onChange={this.handleChange} />
          </div>
+         <select name='private' value={this.state.private} onChange={this.handleChange} >
+          <option value='true'>Private</option>
+          <option value='false'>Public</option>
+        </select>
          <button ref={(btn) => { this.btn = btn; }} className="btn btn-primary m-2">Submit</button>
       </form>
       </>
