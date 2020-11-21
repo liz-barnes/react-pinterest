@@ -18,7 +18,7 @@ const createPin = (object) => new Promise((resolve, reject) => {
   axios.post(`${baseUrl}/pins.json`, object)
     .then((response) => {
       console.warn(response);
-      axios.patch(`${baseUrl}/pins/${response.data.name}.json`, { firebaseKey: response.data.name }).then(resolve);
+      axios.patch(`${baseUrl}/pins/${response.data.name}.json`, { firebaseKey: response.data.name }).then((resp) => resolve(resp));
     }).catch((error) => reject(error));
 });
 
