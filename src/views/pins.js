@@ -74,7 +74,6 @@ import AppModal from '../components/Modal';
 export default class Pins extends React.Component {
   state = {
     pins: [],
-    publicPins: [],
   };
 
   componentDidMount() {
@@ -100,27 +99,19 @@ export default class Pins extends React.Component {
       this.setState({
         pins: response,
       });
-      response.forEach((pin) => {
-        if (pin.private === false || pin.private === 'false') {
-          this.setState({
-            publicPins: this.state.publicPins.concat(pin),
-          });
-          console.warn('public pins', this.state.publicPins);
-        }
-      });
     });
   }
 
   render() {
-    const { publicPins } = this.state;
+    const { pins } = this.state;
     return (
       <div>
         <h1>Your Pins</h1>
-        <AppModal buttonLabel={'Add A Pin'} title={'Add A Pin'}>
-        <PinForm onUpdate={this.getPins}/>
+        <AppModal title={'Add Board'} icon={'fa-plus-circle'}>
+          <PinForm onUpdate={this.getPins}/>
         </AppModal>
         <div className="d-flex flex-wrap container">
-        {publicPins.map((pin) => <PinCard key={pin.firebaseKey} pin={pin} onUpdate={this.getPins}/>)}
+        {pins.map((pin) => <PinCard key={pin.firebaseKey} pin={pin} onUpdate={this.getPins}/>)}
         </div>
       </div>
     );
