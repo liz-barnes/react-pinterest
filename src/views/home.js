@@ -30,7 +30,7 @@ export default function Home({ user }) {
     if (user === null) {
       component = <Loader />;
     } else if (user) {
-      component = 'Load all non-private pins here';
+      component = <PublicPins />;
     } else {
       component = <Auth />;
     }
@@ -41,7 +41,6 @@ export default function Home({ user }) {
     <div>
       <h1>Welcome to React-Pinterest</h1>
       {loadComponent()}
-      <PublicPins />
     </div>
   );
 }

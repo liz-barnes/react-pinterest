@@ -12,6 +12,7 @@ import PinForm from '../views/pinForm';
 import NotFound from '../views/NotFound';
 import Boards from '../views/boards';
 import SearchResults from '../views/SearchResults';
+import EditPin from '../views/EditPin';
 
 export default function Routes({ user }) {
   return (
@@ -35,12 +36,12 @@ export default function Routes({ user }) {
               component={PinForm}
               user={user}
             />
-            <PrivateRoute
+            {/* <PrivateRoute
               exact
               path='/pin-form'
               component={PinForm}
               user={user}
-            />
+            /> */}
             <PrivateRoute
               exact
               path='/boards'
@@ -57,6 +58,12 @@ export default function Routes({ user }) {
               exact
               path='/search/:term/:type'
               component={SearchResults}
+              user={user}
+            />
+            <PrivateRoute
+              exact
+              path='/pin-edit/:id'
+              component={EditPin}
               user={user}
             />
             <Route component={NotFound} />
