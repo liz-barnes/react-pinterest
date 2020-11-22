@@ -22,6 +22,7 @@
 import React from 'react';
 import Auth from '../components/Auth';
 import Loader from '../components/Loader';
+import Pins from './pins';
 
 export default function Home({ user }) {
   const loadComponent = () => {
@@ -40,6 +41,7 @@ export default function Home({ user }) {
     <div>
       <h1>Welcome to React-Pinterest</h1>
       {loadComponent()}
+      <Pins />
     </div>
   );
 }

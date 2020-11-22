@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function PinsCard({ pin }) {
+export default function PinCard({ pin }) {
   return (
     <div className='card m-2'>
       <img className='card-img-top' src={pin.imageUrl} alt='Card cap' />
