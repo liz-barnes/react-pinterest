@@ -32,7 +32,7 @@ import React from 'react';
 import { getUserBoards } from '../helpers/data/boardData';
 import BoardsCard from '../components/Cards/BoardCard';
 import Loader from '../components/Loader';
-import getUid from '../helpers/data/authData';
+// import getUid from '../helpers/data/authData';
 import BoardForm from '../components/Forms/BoardForm';
 import AppModal from '../components/Modal';
 import PageHeader from '../components/PageHeader';
@@ -48,8 +48,9 @@ export default class Boards extends React.Component {
   }
 
   getBoards = () => {
-    const currentUserId = getUid();
-    getUserBoards(currentUserId).then((response) => {
+    // const currentUserId = getUid();
+    const user = this.props.user.uid;
+    getUserBoards(user).then((response) => {
       this.setState({
         boards: response,
       }, this.setLoading);

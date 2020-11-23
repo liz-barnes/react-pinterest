@@ -10,7 +10,7 @@ export default function PinCard({ pin }) {
         <p className='card-text'>
           {pin.description}
         </p>
-        <Link className='btn btn-primary' to={`/pin-edit/${pin.firebaseKey}`}>
+        <Link className='btn btn-primary' to={`/pin-edit/${pin.firebaseKey}`} pin={pin}>
           Edit Pin
         </Link>
       </div>
