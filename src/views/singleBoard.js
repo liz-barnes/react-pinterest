@@ -12,7 +12,12 @@
 // }
 
 import React, { Component } from 'react';
-import { getBoardPins, getPin } from '../helpers/data/pinData';
+import {
+  getBoardPins,
+  getPin,
+  deletePin,
+  // deletePinOfBoard,
+} from '../helpers/data/pinData';
 import { getSingleBoard } from '../helpers/data/boardData';
 import PinCard from '../components/Cards/PinCard';
 import BoardForm from '../components/Forms/BoardForm';
@@ -48,13 +53,32 @@ export default class SingleBoard extends Component {
     return Promise.all([...pinArray]);
   });
 
+  // removePin = (firebaseKey) => {
+  //   const remainingPins = this.state.pins.filter(
+  //     (pin) => pin.firebaseKey !== firebaseKey,
+  //   );
+  //   this.setState({
+  //     pins: remainingPins,
+  //   });
+  //   deletePin(firebaseKey);
+  //   deletePinOfBoard(firebaseKey);
+  // };
+
+  removePin = (e) => {
+    deletePin(e.target.id)
+      .then(() => {
+        this.getPins();
+      });
+  }
+
   render() {
     const { pins, board } = this.state;
+    console.warn('pins length', pins);
     const { user } = this.props;
     const renderPins = () => (
       pins.length
         ? pins.map((pin) => (
-          <PinCard key={pin.firebaseKey} pin={pin} />
+          <PinCard key={pin.firebaseKey} pin={pin} removePin={this.removePin}/>
         )) : (
         <h2>Add Pin</h2>
         )

@@ -34,10 +34,24 @@ const updatePin = (object) => new Promise((resolve, reject) => {
     .then(resolve).catch((error) => reject(error));
 });
 
+const deletePin = (pinId) => axios.delete(`${baseUrl}/pins-boards/${pinId}.json`);
+
+const deletePinOfBoard = (pinId) => {
+  axios.get(`${baseUrl}/pins-boards.json?orderBy="pinId"&equalTo="${pinId}"`)
+    .then((response) => {
+      const deletePins = Object.keys(response.data);
+      deletePins.forEach((pin) => {
+        axios.delete(`${baseUrl}/pins-boards/${pin}.json`);
+      });
+    });
+};
+
 export {
   getBoardPins,
   getUserPins,
   getPin,
   createPin,
   updatePin,
+  deletePin,
+  deletePinOfBoard,
 };
