@@ -64,12 +64,11 @@ export default class SingleBoard extends Component {
   //   deletePinOfBoard(firebaseKey);
   // };
 
-  removePin = (e) => {
-    deletePin(e.target.id)
-      .then(() => {
-        this.getPins();
-      });
-  }
+  removePin = (firebaseKey) => {
+    deletePin(firebaseKey).then(() => {
+      this.getPins();
+    });
+  };
 
   render() {
     const { pins, board } = this.state;

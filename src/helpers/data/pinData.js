@@ -34,7 +34,7 @@ const updatePin = (object) => new Promise((resolve, reject) => {
     .then(resolve).catch((error) => reject(error));
 });
 
-const deletePin = (pinId) => axios.delete(`${baseUrl}/pins-boards/${pinId}.json`);
+const deletePin = (pinId) => axios.delete(`${baseUrl}/pins/${pinId}.json`);
 
 const deletePinOfBoard = (pinId) => {
   axios.get(`${baseUrl}/pins-boards.json?orderBy="pinId"&equalTo="${pinId}"`)

@@ -66,7 +66,7 @@
 // }
 import React from 'react';
 import getUid from '../helpers/data/authData';
-import { getUserPins } from '../helpers/data/pinData';
+import { getUserPins, deletePin } from '../helpers/data/pinData';
 import PinCard from '../components/Cards/PinCard';
 import PinForm from '../components/Forms/PinForm';
 import AppModal from '../components/Modal';
@@ -102,6 +102,12 @@ export default class Pins extends React.Component {
     });
   }
 
+  removePin = (firebaseKey) => {
+    deletePin(firebaseKey).then(() => {
+      this.getPins();
+    });
+  };
+
   render() {
     const { pins } = this.state;
     return (
@@ -111,7 +117,7 @@ export default class Pins extends React.Component {
           <PinForm onUpdate={this.getPins}/>
         </AppModal>
         <div className="d-flex flex-wrap container">
-        {pins.map((pin) => <PinCard key={pin.firebaseKey} pin={pin} onUpdate={this.getPins}/>)}
+        {pins.map((pin) => <PinCard key={pin.firebaseKey} pin={pin} removePin={this.removePin} onUpdate={this.getPins}/>)}
         </div>
       </div>
     );
