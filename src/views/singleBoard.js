@@ -15,7 +15,7 @@ import React, { Component } from 'react';
 import {
   getBoardPins,
   getPin,
-  // deletePin,
+  deletePin,
   // deletePinOfBoard,
 } from '../helpers/data/pinData';
 import { getSingleBoard } from '../helpers/data/boardData';
@@ -23,6 +23,7 @@ import PinCard from '../components/Cards/PinCard';
 import BoardForm from '../components/Forms/BoardForm';
 import AppModal from '../components/Modal';
 import PageHeader from '../components/PageHeader';
+import { getJoinedObject, deleteJoinedObject } from '../helpers/data/pinBoardData';
 // import Pins from './pins';
 
 export default class SingleBoard extends Component {
@@ -66,9 +67,16 @@ export default class SingleBoard extends Component {
 
   removePin = (firebaseKey) => {
     console.warn(firebaseKey);
-    // deletePin(firebaseKey).then(() => {
-    //   this.getPins();
-    // });
+    deletePin(firebaseKey).then(() => {
+      const remainingPins = this.getPins();
+      this.setState({
+        pins: remainingPins,
+      });
+    }).then(() => {
+      getJoinedObject(firebaseKey).then((resp) => {
+        deleteJoinedObject(resp[0].firebaseKey);
+      });
+    });
   };
 
   render() {

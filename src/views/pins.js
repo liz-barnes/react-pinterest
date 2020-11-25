@@ -70,6 +70,7 @@ import { getUserPins, deletePin } from '../helpers/data/pinData';
 import PinCard from '../components/Cards/PinCard';
 import PinForm from '../components/Forms/PinForm';
 import AppModal from '../components/Modal';
+import { getJoinedObject, deleteJoinedObject } from '../helpers/data/pinBoardData';
 
 export default class Pins extends React.Component {
   state = {
@@ -105,6 +106,10 @@ export default class Pins extends React.Component {
   removePin = (firebaseKey) => {
     deletePin(firebaseKey).then(() => {
       this.getPins();
+    }).then(() => {
+      getJoinedObject(firebaseKey).then((resp) => {
+        deleteJoinedObject(resp[0].firebaseKey);
+      });
     });
   };
 
