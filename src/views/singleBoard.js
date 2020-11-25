@@ -15,7 +15,7 @@ import React, { Component } from 'react';
 import {
   getBoardPins,
   getPin,
-  deletePin,
+  // deletePin,
   // deletePinOfBoard,
 } from '../helpers/data/pinData';
 import { getSingleBoard } from '../helpers/data/boardData';
@@ -73,7 +73,7 @@ export default class SingleBoard extends Component {
 
   render() {
     const { pins, board } = this.state;
-    console.warn('pins length', pins);
+    console.warn('single board pins length', pins);
     const { user } = this.props;
     const renderPins = () => (
       pins.length

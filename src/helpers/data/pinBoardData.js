@@ -9,8 +9,8 @@ const createPinOfBoard = (object) => {
   }).catch((error) => console.warn(error));
 };
 
-const getJoinedObject = (pinId) => new Promise((resolve, reject) => {
-  axios.get(`${baseUrl}/pins-boards.json?orderBy="pinId"&equalTo="${pinId}"`).then((response) => {
+const getJoinedObject = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/pins-boards.json?orderBy="pinId"&equalTo="${firebaseKey}"`).then((response) => {
     console.warn(Object.values(response.data));
     resolve(Object.values(response.data));
   }).catch((error) => reject(error));
@@ -21,4 +21,11 @@ const updateJoinedObject = (firebaseKey, object) => new Promise((resolve, reject
   axios.patch(`${baseUrl}/pins-boards/${firebaseKey}.json`, object).then(resolve).catch((error) => reject(error));
 });
 
-export { createPinOfBoard, getJoinedObject, updateJoinedObject };
+const deleteJoinedObject = (firebaseKey) => axios.delete(`${baseUrl}/pins-boards/${firebaseKey}.json`);
+
+export {
+  createPinOfBoard,
+  getJoinedObject,
+  updateJoinedObject,
+  deleteJoinedObject,
+};
