@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function BoardCard({ board }) {
+export default function BoardCard({ board, removeBoard }) {
   return (
     <div className="card m-2">
       <img className="card-img-top" src={board.imageUrl} alt="Card image cap" />
@@ -13,6 +13,7 @@ export default function BoardCard({ board }) {
         <Link className='btn btn-primary' to={`/boards/${board.firebaseKey}`}>
           View Pins
         </Link>
+        <button className="btn btn-danger" onClick={() => removeBoard(board.firebaseKey)}>Delete Board</button>
       </div>
     </div>
   );

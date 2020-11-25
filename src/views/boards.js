@@ -29,13 +29,14 @@
 //   }
 // }
 import React from 'react';
-import { getUserBoards } from '../helpers/data/boardData';
+import { getUserBoards, deleteBoard } from '../helpers/data/boardData';
 import BoardsCard from '../components/Cards/BoardCard';
 import Loader from '../components/Loader';
 // import getUid from '../helpers/data/authData';
 import BoardForm from '../components/Forms/BoardForm';
 import AppModal from '../components/Modal';
 import PageHeader from '../components/PageHeader';
+import { getJoinedBoardObject, deleteJoinedObject } from '../helpers/data/pinBoardData';
 
 export default class Boards extends React.Component {
   state = {
@@ -67,11 +68,22 @@ export default class Boards extends React.Component {
     clearInterval(this.timer);
   }
 
+  removeBoard = (firebaseKey) => {
+    console.warn('fb', firebaseKey);
+    deleteBoard(firebaseKey).then(() => {
+      this.getBoards();
+    }).then(() => {
+      getJoinedBoardObject(firebaseKey).then((resp) => {
+        deleteJoinedObject(resp[0].firebaseKey);
+      });
+    });
+  };
+
   render() {
     const { boards, loading } = this.state;
     const { user } = this.props;
     const showBoards = () => (
-      boards.map((board) => <BoardsCard key={board.firebaseKey} board={board} />)
+      boards.map((board) => <BoardsCard key={board.firebaseKey} board={board} removeBoard={this.removeBoard} onUpdate={this.getBoards} />)
     );
     return (
       <>

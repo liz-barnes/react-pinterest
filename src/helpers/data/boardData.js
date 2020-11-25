@@ -35,4 +35,5 @@ export {
   getSingleBoard,
   createBoard,
   updateBoard,
+  deleteBoard,
 };

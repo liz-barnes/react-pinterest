@@ -16,6 +16,13 @@ const getJoinedObject = (firebaseKey) => new Promise((resolve, reject) => {
   }).catch((error) => reject(error));
 });
 
+const getJoinedBoardObject = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/pins-boards.json?orderBy="boardId"&equalTo="${firebaseKey}"`).then((response) => {
+    console.warn(Object.values(response.data));
+    resolve(Object.values(response.data));
+  }).catch((error) => reject(error));
+});
+
 const updateJoinedObject = (firebaseKey, object) => new Promise((resolve, reject) => {
   console.warn('joined object', object);
   axios.patch(`${baseUrl}/pins-boards/${firebaseKey}.json`, object).then(resolve).catch((error) => reject(error));
@@ -28,4 +35,5 @@ export {
   getJoinedObject,
   updateJoinedObject,
   deleteJoinedObject,
+  getJoinedBoardObject,
 };
