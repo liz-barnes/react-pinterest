@@ -4,7 +4,7 @@ import 'firebase/storage';
 import getUid from '../../helpers/data/authData';
 import { createPin, updatePin } from '../../helpers/data/pinData';
 import { getUserBoards } from '../../helpers/data/boardData';
-import createPinOfBoard from '../../helpers/data/pinBoardData';
+import { createPinOfBoard, getJoinedObject, updateJoinedObject } from '../../helpers/data/pinBoardData';
 
 export default class PinForm extends Component {
   state = {
@@ -77,11 +77,33 @@ export default class PinForm extends Component {
       });
     } else {
       updatePin(this.state).then(() => {
+        const newObject = {
+          boardId: this.state.boardId,
+        };
+        getJoinedObject(this.state.firebaseKey).then((resp) => {
+          updateJoinedObject(resp[0].firebaseKey, newObject);
+        });
         this.props.onUpdate?.(this.props.pin.firebaseKey);
         this.setState({ success: true });
       });
     }
   };
+
+  // updateJoinedObject(newObject).then((response) => {
+  //   console.warn('join', response);
+  // });
+  // const pinOfBoardsObject = {
+  //   boardId: this.state.boardId,
+  //   pinId: this.state.firebaseKey,
+  //   userId: this.state.userId,
+  // };
+  // console.warn('pinboardobject22', pinOfBoardsObject);
+  // createPinOfBoard(pinOfBoardsObject);
+  // .then(() => {
+  //   console.warn('update board', this.state);
+  //   this.props.onUpdate?.(this.props.pin.firebaseKey);
+  //   this.setState({ success: true });
+  // });
 
   // .then(() => {
   //   const pinOfBoardsObject = {

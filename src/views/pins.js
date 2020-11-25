@@ -112,7 +112,6 @@ export default class Pins extends React.Component {
     const { pins } = this.state;
     return (
       <div>
-        <h1>Your Pins</h1>
         <AppModal title={'Add Board'} icon={'fa-plus-circle'}>
           <PinForm onUpdate={this.getPins}/>
         </AppModal>

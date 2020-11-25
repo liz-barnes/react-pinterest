@@ -9,4 +9,16 @@ const createPinOfBoard = (object) => {
   }).catch((error) => console.warn(error));
 };
 
-export default createPinOfBoard;
+const getJoinedObject = (pinId) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/pins-boards.json?orderBy="pinId"&equalTo="${pinId}"`).then((response) => {
+    console.warn(Object.values(response.data));
+    resolve(Object.values(response.data));
+  }).catch((error) => reject(error));
+});
+
+const updateJoinedObject = (firebaseKey, object) => new Promise((resolve, reject) => {
+  console.warn('joined object', object);
+  axios.patch(`${baseUrl}/pins-boards/${firebaseKey}.json`, object).then(resolve).catch((error) => reject(error));
+});
+
+export { createPinOfBoard, getJoinedObject, updateJoinedObject };

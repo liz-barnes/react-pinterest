@@ -23,7 +23,7 @@ import PinCard from '../components/Cards/PinCard';
 import BoardForm from '../components/Forms/BoardForm';
 import AppModal from '../components/Modal';
 import PageHeader from '../components/PageHeader';
-import Pins from './pins';
+// import Pins from './pins';
 
 export default class SingleBoard extends Component {
   state = {
@@ -61,13 +61,14 @@ export default class SingleBoard extends Component {
   //     pins: remainingPins,
   //   });
   //   deletePin(firebaseKey);
-  //   deletePinOfBoard(firebaseKey);
+  //   // deletePinOfBoard(firebaseKey);
   // };
 
   removePin = (firebaseKey) => {
-    deletePin(firebaseKey).then(() => {
-      this.getPins();
-    });
+    console.warn(firebaseKey);
+    // deletePin(firebaseKey).then(() => {
+    //   this.getPins();
+    // });
   };
 
   render() {
@@ -91,7 +92,7 @@ export default class SingleBoard extends Component {
         <PageHeader user={user} />
         <h1>{board.name} Pins</h1>
         <h4>{board.description}</h4>
-        <Pins />
+        {/* <Pins /> */}
         <div className="d-flex flex-wrap container">{renderPins()}</div>
       </div>
     );
