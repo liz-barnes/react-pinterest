@@ -37,6 +37,7 @@ import BoardForm from '../components/Forms/BoardForm';
 import AppModal from '../components/Modal';
 import PageHeader from '../components/PageHeader';
 import { getJoinedBoardObject, deleteJoinedObject } from '../helpers/data/pinBoardData';
+import { getBoardPins, deletePin } from '../helpers/data/pinData';
 
 export default class Boards extends React.Component {
   state = {
@@ -75,6 +76,14 @@ export default class Boards extends React.Component {
     }).then(() => {
       getJoinedBoardObject(firebaseKey).then((resp) => {
         deleteJoinedObject(resp[0].firebaseKey);
+        console.warn(resp);
+      });
+    }).then(() => {
+      getBoardPins(firebaseKey).then((response) => {
+        console.warn('pin board', response);
+        response.forEach((item) => {
+          deletePin(item.pinId);
+        });
       });
     });
   };
