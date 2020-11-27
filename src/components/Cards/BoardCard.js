@@ -13,7 +13,7 @@ export default function BoardCard({ board, removeBoard }) {
         <Link className='btn btn-primary' to={`/boards/${board.firebaseKey}`}>
           View Pins
         </Link>
-        <button className="btn btn-danger" onClick={() => removeBoard(board.firebaseKey)}>Delete Board</button>
+        <button className="btn btn-danger mx-2" onClick={() => removeBoard(board.firebaseKey)}>Delete Board</button>
       </div>
     </div>
   );

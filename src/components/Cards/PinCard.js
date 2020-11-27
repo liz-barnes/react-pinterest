@@ -13,7 +13,7 @@ export default function PinCard({ pin, removePin }) {
         <Link className='btn btn-primary' to={`/pin-edit/${pin.firebaseKey}`} pin={pin}>
           Edit Pin
         </Link>
-        <button className="btn btn-danger" onClick={() => removePin(pin.firebaseKey)}>Delete Pin</button>
+        <button className="btn btn-danger mx-2" onClick={() => removePin(pin.firebaseKey)}>Delete Pin</button>
       </div>
     </div>
   );
