@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PinForm from '../components/Forms/PinForm';
 import AppModal from '../components/Modal';
-import PinCard from '../components/Cards/PinCard';
+import SinglePinCard from '../components/Cards/SinglePinCard';
 import { getPin } from '../helpers/data/pinData';
 // const EditPin = ({ pin }) => (
 //     <div>
@@ -37,7 +37,7 @@ class EditPin extends Component {
         <AppModal title={'Edit Pin'} icon={'fa-pen-nib'} buttonLabel={' Edit Pin'}>
          <PinForm pin={pin} onUpdate={this.getPinInfo} />
         </AppModal>
-        <PinCard pin={pin} />
+        <SinglePinCard pin={pin} />
       </div>
     );
   }
