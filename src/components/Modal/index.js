@@ -4,7 +4,7 @@ import {
 } from 'reactstrap';
 
 const AppModal = (props) => {
-  const { className } = props;
+  const { className, buttonLabel } = props;
 
   const [modal, setModal] = useState(false);
 
@@ -14,6 +14,7 @@ const AppModal = (props) => {
     <div>
       <Button color={props.btnColor} onClick={toggle}>
         <i className={`fas ${props.icon} fa-1x`}></i>
+        {buttonLabel}
       </Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
       <ModalHeader toggle={toggle}>{props.title}</ModalHeader>

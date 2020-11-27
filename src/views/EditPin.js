@@ -34,7 +34,7 @@ class EditPin extends Component {
     return (
       <div>
         <h3>Edit Pin</h3>
-        <AppModal title={'Edit Modal'} icon={'fa-pen-nib'}>
+        <AppModal title={'Edit Pin'} icon={'fa-pen-nib'} buttonLabel={' Edit Pin'}>
          <PinForm pin={pin} onUpdate={this.getPinInfo} />
         </AppModal>
         <PinCard pin={pin} />

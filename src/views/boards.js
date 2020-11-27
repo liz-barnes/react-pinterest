@@ -75,8 +75,9 @@ export default class Boards extends React.Component {
       this.getBoards();
     }).then(() => {
       getJoinedBoardObject(firebaseKey).then((resp) => {
-        deleteJoinedObject(resp[0].firebaseKey);
-        console.warn(resp);
+        if (resp.length) {
+          deleteJoinedObject(resp[0].firebaseKey);
+        }
       });
     }).then(() => {
       getBoardPins(firebaseKey).then((response) => {
@@ -102,7 +103,7 @@ export default class Boards extends React.Component {
           <>
           <PageHeader user={user} />
           <h1>Boards</h1>
-          <AppModal title={'Add Board'} icon={'fa-plus-circle'}>
+          <AppModal title={'Add Board'} buttonLabel={' Add Board'} icon={'fa-plus-circle'}>
             <BoardForm onUpdate={this.getBoards}/>
           </AppModal>
           <div className='d-flex flex-wrap container'>{showBoards()}</div>

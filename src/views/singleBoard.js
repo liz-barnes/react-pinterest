@@ -94,7 +94,7 @@ export default class SingleBoard extends Component {
 
     return (
       <div>
-        <AppModal title={'Edit Modal'} icon={'fa-pen-nib'}>
+        <AppModal title={'Edit Board'} icon={'fa-pen-nib'} buttonLabel={' Edit Board'}>
          <BoardForm board={board} onUpdate={this.getBoardInfo} />
         </AppModal>
         <PageHeader user={user} />

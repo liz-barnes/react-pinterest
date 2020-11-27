@@ -31,7 +31,7 @@ export default class PublicPins extends React.Component {
       const { publicPins } = this.state;
       return (
       <div>
-        <AppModal title={'Add Board'} icon={'fa-plus-circle'}>
+        <AppModal title={'Add Board'} icon={'fa-plus-circle'} buttonLabel={' Add Board'}>
           <PinForm onUpdate={this.getPins}/>
         </AppModal>
         <div className="d-flex flex-wrap container">
