@@ -120,7 +120,7 @@ export default class Pins extends React.Component {
         <AppModal title={'Add Pin'} icon={'fa-plus-circle'} buttonLabel={' Add Pin'}>
           <PinForm onUpdate={this.getPins}/>
         </AppModal>
-        <div className="d-flex flex-wrap container">
+        <div className="pin-container">
         {pins.map((pin) => <PinCard key={pin.firebaseKey} pin={pin} removePin={this.removePin} onUpdate={this.getPins}/>)}
         </div>
       </div>

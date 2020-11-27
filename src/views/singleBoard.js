@@ -88,20 +88,20 @@ export default class SingleBoard extends Component {
         ? pins.map((pin) => (
           <PinCard key={pin.firebaseKey} pin={pin} removePin={this.removePin}/>
         )) : (
-        <h2>Add Pin</h2>
+        <h2>There are no pins on the board</h2>
         )
     );
 
     return (
       <div>
+        <PageHeader user={user} />
         <AppModal title={'Edit Board'} icon={'fa-pen-nib'} buttonLabel={' Edit Board'}>
          <BoardForm board={board} onUpdate={this.getBoardInfo} />
         </AppModal>
-        <PageHeader user={user} />
         <h1>{board.name} Pins</h1>
         <h4>{board.description}</h4>
         {/* <Pins /> */}
-        <div className="d-flex flex-wrap container">{renderPins()}</div>
+        <div className="pin-container">{renderPins()}</div>
       </div>
     );
   }
