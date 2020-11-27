@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function PinCard({ pin, removePin }) {
   return (
-    <div className='card m-2'>
+    <div className='card m-2 pin-card'>
       <img className='card-img-top pin-image' src={pin.imageUrl} alt='Card cap' />
       <div className='card-body'>
         <h5 className='card-title'>{pin.name}</h5>

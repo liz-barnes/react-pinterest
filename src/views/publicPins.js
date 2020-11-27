@@ -34,7 +34,7 @@ export default class PublicPins extends React.Component {
         <AppModal title={'Add Board'} icon={'fa-plus-circle'} buttonLabel={' Add Board'}>
           <PinForm onUpdate={this.getPins}/>
         </AppModal>
-        <div className="d-flex flex-wrap container">
+        <div className="pin-container">
         {publicPins.map((pin) => <PinCard key={pin.firebaseKey} pin={pin} onUpdate={this.getPins}/>)}
         </div>
       </div>

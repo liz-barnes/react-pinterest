@@ -38,7 +38,7 @@ export default function Home({ user }) {
   };
 
   return (
-    <div>
+    <div className='home-page'>
       <h1>Welcome to React-Pinterest</h1>
       {loadComponent()}
     </div>

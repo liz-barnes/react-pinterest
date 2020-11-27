@@ -167,7 +167,8 @@ export default class PinForm extends Component {
               onChange={this.handleChange}
             />
           </div>
-          <div>
+          <div className="form-dropdown d-flex justify-content-center justify-content-around">
+            <div>
             <select
               name="boardId"
               value={this.state.boardId}
@@ -178,8 +179,8 @@ export default class PinForm extends Component {
               <option value="">Select a Board</option>
               {showBoardOptions()}
             </select>
-          </div>
-          <div>
+            </div>
+            <div>
             <select
               name="private"
               value={this.state.private}
@@ -189,7 +190,19 @@ export default class PinForm extends Component {
               <option value="true">Private</option>
               <option value="false">Public</option>
             </select>
+            </div>
           </div>
+          {/* <div>
+            <select
+              name="private"
+              value={this.state.private}
+              onChange={this.handleChange}
+              required
+            >
+              <option value="true">Private</option>
+              <option value="false">Public</option>
+            </select>
+          </div> */}
           <button
             ref={(btn) => {
               this.btn = btn;
