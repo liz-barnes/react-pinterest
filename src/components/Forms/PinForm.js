@@ -71,7 +71,6 @@ export default class PinForm extends Component {
             pinId: this.state.firebaseKey,
             userId: this.state.userId,
           };
-          console.warn('pinboardobject', pinOfBoardsObject);
           createPinOfBoard(pinOfBoardsObject);
         }, 3000);
       });

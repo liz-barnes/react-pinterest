@@ -66,7 +66,6 @@ export default class SingleBoard extends Component {
   // };
 
   removePin = (firebaseKey) => {
-    console.warn(firebaseKey);
     deletePin(firebaseKey).then(() => {
       const remainingPins = this.getPins();
       this.setState({
@@ -81,7 +80,6 @@ export default class SingleBoard extends Component {
 
   render() {
     const { pins, board } = this.state;
-    console.warn('single board pins length', pins);
     const { user } = this.props;
     const renderPins = () => (
       pins.length
