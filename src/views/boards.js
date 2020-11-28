@@ -70,7 +70,6 @@ export default class Boards extends React.Component {
   }
 
   removeBoard = (firebaseKey) => {
-    console.warn('fb', firebaseKey);
     deleteBoard(firebaseKey).then(() => {
       this.getBoards();
     }).then(() => {
@@ -81,7 +80,6 @@ export default class Boards extends React.Component {
       });
     }).then(() => {
       getBoardPins(firebaseKey).then((response) => {
-        console.warn('pin board', response);
         response.forEach((item) => {
           deletePin(item.pinId);
         });
