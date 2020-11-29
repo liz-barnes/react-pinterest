@@ -41,7 +41,7 @@ export default function MyNavbar(props) {
               </Link>
             </NavItem>
           </Nav>
-          <SearchInput {...props} />
+          {/* <SearchInput {...props} /> */}
           {
             user
             && <>
@@ -54,7 +54,7 @@ export default function MyNavbar(props) {
                 </DropdownItem>
                 <DropdownItem>
                   <div
-                    className='nav-link btn btn-danger'
+                    className='nav-link logout-btn'
                     onClick={(e) => logMeOut(e)}
                   >
                     Logout

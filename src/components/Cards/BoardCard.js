@@ -11,10 +11,10 @@ export default function BoardCard({ board, removeBoard }) {
         <p className="card-text">
           {board.description}
         </p>
-        <Link className='btn btn-primary' to={`/boards/${board.firebaseKey}`}>
+        <Link className='edit-btn' to={`/boards/${board.firebaseKey}`}>
           View Pins
         </Link>
-        <button className="btn btn-danger mx-2" onClick={() => removeBoard(board.firebaseKey)}>Delete Board</button>
+        <button className="mx-2 delete-btn" onClick={() => removeBoard(board.firebaseKey)}>Delete Board</button>
       </div>
     </div>
   );

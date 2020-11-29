@@ -1,6 +1,11 @@
 .board-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  margin: 25px 75px;
+  // display: grid;
+  // grid-template-columns: 1fr 1fr 1fr 1fr;
+  // margin: 25px 50px;
+  // text-align: left;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
   text-align: left;
+  margin-top: 25px;
 }

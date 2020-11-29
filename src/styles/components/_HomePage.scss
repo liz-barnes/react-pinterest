@@ -1,4 +1,12 @@
 .home-page {
-  margin-top: 25px;
+  margin: 25px 50px;
   text-align: center;
+}
+
+.public-pin-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  text-align: left;
+  margin-top: 25px;
 }
