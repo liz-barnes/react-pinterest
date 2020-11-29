@@ -1,0 +1,18 @@
+a .dropdown-toggle .nav-link {
+    color: white;
+  }
+.logout-btn {
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  background: $primaryColor;
+  border: 1px solid $primaryColor;
+  // padding: 6px;
+}
+
+.logout-btn:hover {
+  background: $accentColor2;
+  border: 1px solid $primaryColor;
+  text-decoration: none;
+  color: white;
+}

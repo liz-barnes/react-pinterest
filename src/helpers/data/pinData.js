@@ -2,6 +2,13 @@ import axios from 'axios';
 
 const baseUrl = 'https://react-pinterest-13f74.firebaseio.com';
 
+const getAllPins = () => new Promise((resolve, reject) => {
+  axios
+    .get(`${baseUrl}/pins.json`).then((response) => {
+      resolve(Object.values(response.data));
+    }).catch((error) => reject(error));
+});
+
 const getUserPins = (uid) => new Promise((resolve, reject) => {
   axios
     .get(`${baseUrl}/pins.json?orderBy="userId"&equalTo="${uid}"`).then((response) => {
@@ -46,6 +53,7 @@ const deletePinOfBoard = (pinId) => {
 };
 
 export {
+  getAllPins,
   getBoardPins,
   getUserPins,
   getPin,

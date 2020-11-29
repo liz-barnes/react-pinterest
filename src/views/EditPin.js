@@ -33,11 +33,12 @@ class EditPin extends Component {
     const { pin } = this.state;
     return (
       <div>
-        <h3>Edit Pin</h3>
         <AppModal title={'Edit Pin'} icon={'fa-pen-nib'} buttonLabel={' Edit Pin'}>
          <PinForm pin={pin} onUpdate={this.getPinInfo} />
         </AppModal>
-        <SinglePinCard pin={pin} />
+        <div className="single-pin-card-container d-flex justify-content-center">
+          <SinglePinCard pin={pin} />
+        </div>
       </div>
     );
   }

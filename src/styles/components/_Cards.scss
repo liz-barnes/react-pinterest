@@ -1,15 +1,43 @@
-.pin-card {
-  // min-width: 250px;
+.single-pin-card {
+  width: 50%;
 }
 
-.pin-image {
+.single-pin-image {
+  background-size: cover;
+  background-position: top;
+  height: 425px;
+}
+
+.pin-image, .public-pin-image {
   background-size: cover;
   background-position: center;
   height: 250px;
 }
 
-.board-card, .pin-card {
+.board-card, .pin-card, .public-pin-card {
   min-width: 250px;
   max-width: 300px;
   max-height: 400px;
+}
+
+.edit-btn, .delete-btn {
+  border-radius: 5px;
+  color: white;
+  background: $primaryColor;
+  border: 1px solid $primaryColor;
+}
+
+.edit-btn {
+  padding: 7px;
+}
+
+.delete-btn {
+  padding: 4px 7px;
+}
+
+.edit-btn:hover, .delete-btn:hover {
+  background: $accentColor2;
+  border: 1px solid $primaryColor;
+  text-decoration: none;
+  color: white;
 }
