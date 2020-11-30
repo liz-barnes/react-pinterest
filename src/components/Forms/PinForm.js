@@ -86,31 +86,10 @@ export default class PinForm extends Component {
         this.setState({ success: true });
       });
     }
+    setTimeout(() => {
+      this.setState({ success: false });
+    }, 3000);
   };
-
-  // updateJoinedObject(newObject).then((response) => {
-  //   console.warn('join', response);
-  // });
-  // const pinOfBoardsObject = {
-  //   boardId: this.state.boardId,
-  //   pinId: this.state.firebaseKey,
-  //   userId: this.state.userId,
-  // };
-  // console.warn('pinboardobject22', pinOfBoardsObject);
-  // createPinOfBoard(pinOfBoardsObject);
-  // .then(() => {
-  //   console.warn('update board', this.state);
-  //   this.props.onUpdate?.(this.props.pin.firebaseKey);
-  //   this.setState({ success: true });
-  // });
-
-  // .then(() => {
-  //   const pinOfBoardsObject = {
-  //     boardId: this.state.boardId,
-  //     pinId: this.state.firebaseKey,
-  //     userId: this.state.userId,
-  //   };
-  //   createPinOfBoard(pinOfBoardsObject);
 
   render() {
     const { success, boards } = this.state;
@@ -206,7 +185,7 @@ export default class PinForm extends Component {
             ref={(btn) => {
               this.btn = btn;
             }}
-            className="btn btn-primary m-2"
+            className="submit-btn m-2"
           >
             Submit
           </button>

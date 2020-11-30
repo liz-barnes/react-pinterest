@@ -1,0 +1,20 @@
+.submit-btn {
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+  background: $primaryColor;
+  border: 1px solid $primaryColor;
+}
+
+.submit-btn:hover {
+  background: $accentColor2;
+  border: 1px solid $primaryColor;
+  text-decoration: none;
+  color: white;
+}
+
+.alert-success {
+  background-color: $primaryColor;
+  border: 1px solid $primaryColor;
+  color: white;
+}

@@ -52,6 +52,9 @@ export default class BoardForm extends Component {
           this.setState({ success: true });
         });
     }
+    setTimeout(() => {
+      this.setState({ success: false });
+    }, 3000);
   }
 
   render() {
@@ -97,7 +100,7 @@ export default class BoardForm extends Component {
         <div>
          <input className="m-2" type="file" id="myFile" name="filename" accept="image/*" onChange={this.handleChange} />
          </div>
-         <button ref={(btn) => { this.btn = btn; }} className="btn btn-primary m-2">Submit</button>
+         <button ref={(btn) => { this.btn = btn; }} className="submit-btn m-2">Submit</button>
       </form>
       </>
     );

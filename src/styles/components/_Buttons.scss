@@ -1,0 +1,30 @@
+.edit-btn, .delete-btn, .login-btn, .logout-btn {
+  border-radius: 5px;
+  color: white;
+  background: $primaryColor;
+  border: 1px solid $primaryColor;
+}
+
+.edit-btn:hover, .delete-btn:hover, .login-btn:hover, .logout-btn:hover {
+  background: $accentColor2;
+  border: 1px solid $primaryColor;
+  text-decoration: none;
+  color: white;
+}
+
+.edit-btn {
+  padding: 7px;
+}
+
+.delete-btn {
+  padding: 4px 7px;
+}
+
+.login-btn {
+  padding: 7px 12px;
+  font-size: 24px;
+}
+
+.logout-btn {
+  text-align: center;
+}
