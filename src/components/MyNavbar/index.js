@@ -13,7 +13,7 @@ import {
   DropdownMenu,
   DropdownItem,
 } from 'reactstrap';
-import SearchInput from '../SearchInput';
+// import SearchInput from '../SearchInput';
 
 export default function MyNavbar(props) {
   const history = useHistory();
@@ -28,7 +28,7 @@ export default function MyNavbar(props) {
   return user && (
     <div>
       <Navbar color='dark' dark expand='md' className='justify-content-between'>
-        <Link className="navbar-brand" to='/'>Pinterest</Link>
+        <Link className="navbar-brand" to='/'>React Pinterest</Link>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className='mr-auto' navbar>
