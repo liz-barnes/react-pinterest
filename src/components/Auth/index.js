@@ -13,8 +13,9 @@ export default class Auth extends Component {
   render() {
     return (
       <div className='Auth'>
-        <button className='btn btn-secondary' onClick={this.loginClickEvent}>
-          <img src={googleImage} alt='Google Sign In Button' />
+        <button className='login-btn mt-4' onClick={this.loginClickEvent}>
+          {/* <img src={googleImage} alt='Google Sign In Button' /> */}
+          Sign in with Google
         </button>
       </div>
     );
